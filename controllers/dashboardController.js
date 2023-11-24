@@ -19,3 +19,39 @@ exports.getTotalStatus = catchAsync(async (req, res, next) => {
     asset: assetTotal,
   });
 });
+
+exports.getCompletion = catchAsync(async (req, res, next) => {
+  const completion = await Asset.aggregate([
+    {
+      $group: {
+        _id: null,
+        completed: {
+          $sum: {
+            $cond: [
+              {
+                $ifNull: ["$dateCompleted", false],
+              },
+              1,
+              0,
+            ],
+          },
+        },
+        notComplete: {
+          $sum: {
+            $cond: [
+              {
+                $eq: ["$dateCompleted", null],
+              },
+              1,
+              0,
+            ],
+          },
+        },
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    completion,
+  });
+});
