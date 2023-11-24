@@ -12,6 +12,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const UserRoutes = require("./../routes/User.routes");
 const QuestionRoutes = require("../routes/Question.routes");
 const AssetRoutes = require("../routes/Asset.routes");
+const DashboardRoutes = require("../routes/Dashboard.routes");
 
 const errorController = require("../controllers/errorController");
 
@@ -53,6 +54,7 @@ router.get("/", (req, res) => {
 router.use("/api/v1/user", UserRoutes);
 router.use("/api/v1/question", QuestionRoutes);
 router.use("/api/v1/asset", AssetRoutes);
+router.use("/api/v1/dashboard", DashboardRoutes);
 router.get("/sample", (req, res) => {
   res.send("App is running");
 });
