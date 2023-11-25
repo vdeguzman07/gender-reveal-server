@@ -40,12 +40,7 @@ exports.getCompletion = catchAsync(async (req, res, next) => {
           $sum: {
             $cond: [
               {
-                $or: [
-                  {
-                    $eq: ["$dateCompleted", null],
-                  },
-                  { $eq: ["$ddateCompleted", undefined] },
-                ],
+                $eq: [{ $ifNull: ["$field", null] }, null],
               },
               1,
               0,
