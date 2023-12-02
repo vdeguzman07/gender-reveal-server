@@ -31,6 +31,7 @@ app.use(
         "https://vdg-asset-management.netlify.app/",
         "https://sumalinog-asset-management.netlify.app",
         "https://sumalinog-asset-management.netlify.app/",
+        "https://viel-gender-reveal.netlify.app",
         "*",
         //   "https://655b208a2802f363d70d6b96--clinquant-liger-ae140b.netlify.app",
         //   "https://s-feast-development-4f65d5a8b11b.herokuapp.com",
